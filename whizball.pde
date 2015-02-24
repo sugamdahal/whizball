@@ -37,8 +37,16 @@ void draw()
   else if (gameStarted && !userNameInput) {
     background(0);
     // Get user input 
-    text("Please write your name and hit enter to start playing. ", 30, 40);
-    text(userName,30,90);
+    textSize(36);
+    text("WHIZZBALL",300,40);
+    
+    
+    textSize(28);
+    text("Please write your name and hit enter to start playing. ", 30, 100);
+    
+    
+    text(userName,300,150);
+    fill(0,255,0);
     
   }
   
@@ -87,8 +95,11 @@ void draw()
 }
 
 void keyPressed() {
+  print("press");
   if (!gameStarted ) {
-    gameStarted = true;
+    if (key == '\n') {
+      gameStarted = true;
+    }
        
   } else if (!userNameInput) {
      // Keep on taking user input until enter is pressed
