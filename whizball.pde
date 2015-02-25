@@ -1,6 +1,6 @@
 int rad = 30;        // Width of the shape
 float xpos, ypos;    // Starting position of shape    
-// test
+
 float xspeed = 0;  // Speed of the shape
 float yspeed = 3;  // Speed of the shape
 
