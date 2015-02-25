@@ -95,11 +95,8 @@ void draw()
 }
 
 void keyPressed() {
-  print("press");
   if (!gameStarted ) {
-    if (key == '\n') {
       gameStarted = true;
-    }
        
   } else if (!userNameInput) {
      // Keep on taking user input until enter is pressed
