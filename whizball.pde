@@ -1,8 +1,11 @@
 int rad = 30;        // Width of the shape
 float xpos, ypos;    // Starting position of shape    
 
-float xspeed = 3;  // Speed of the shape
+float xspeed = 0;  // Speed of the shape
 float yspeed = 3;  // Speed of the shape
+
+float yacceleration = 0; // Y Acceleration
+float xacceleration = 0; // X Acceleration
 
 float xdirection = 1;  // Left or Right
 float ydirection = 1;  // Top to Bottom
@@ -22,7 +25,7 @@ void setup()
   frameRate(25);
   ellipseMode(RADIUS);
   // Set the starting position of the shape
-  xpos = width/8;
+  xpos = width/2;
   ypos = height/2;
 }
 
@@ -54,8 +57,18 @@ void draw()
     
           background(255, 0, 0);
           
-         
-          if (frameCount % 10 == 2) println(frameRate);
+          if (yacceleration < 0) {
+            if (yspeed > 0.1) {
+              yspeed += yacceleration*0.1;    
+            }
+          }
+          
+          else if (yacceleration > 0) {
+            if (yspeed < 100) {
+              yspeed += yacceleration*0.1;    
+            }
+          }
+          
       
           // Update the position of the shape
           xpos = xpos + ( (xspeed) * (xdirection) );
@@ -83,6 +96,15 @@ void draw()
         ellipse(xpos+15, ypos-8, rad/5, rad/4);
         stroke(0);
         ellipse(xpos, ypos+15, rad/2, rad/6);
+        
+        textSize(12);
+        text(userName,40,40);
+        text("Acceleration: ",40,55);
+        text(yacceleration,150,55);
+        text("YSpeed: ",40,70);
+        text(yspeed,150,70);
+        text("XSpeed: ",40,85);
+        text(xspeed,150,85);
   }
      
    
@@ -94,7 +116,9 @@ void keyPressed() {
   if (!gameStarted ) {
       gameStarted = true;
        
-  } else if (!userNameInput) {
+  } 
+  
+  else if (!userNameInput) {
      // Keep on taking user input until enter is pressed
      if (key != '\n') {
        userName = userName + key;
@@ -103,5 +127,19 @@ void keyPressed() {
      else {
        userNameInput = true;
      }
+  }
+  
+  else if (gameStarted && userNameInput) {
+    if (key == CODED) {
+      if (keyCode == UP) {
+        yacceleration += 1;
+      } else if (keyCode == DOWN) {
+        yacceleration -= 1;
+      } else if (keyCode == LEFT) {
+        xspeed -= 1;
+      } else if (keyCode == RIGHT) {
+        xspeed += 1;
+      }
+    }
   }
 }
