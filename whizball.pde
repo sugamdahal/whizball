@@ -53,11 +53,7 @@ void draw()
   else if (gameStarted && userNameInput) {
     
           background(255, 0, 0);
-          for (int i = 0; i < 10; i++) {
-            float x = random(width);
-            float y = random(height);
-            text("TUT group 12", x*2, y*2);
-          }
+          
          
           if (frameCount % 10 == 2) println(frameRate);
       
