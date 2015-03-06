@@ -4,7 +4,7 @@ float xpos, ypos;    // Starting position of shape
 float xspeed = 0;  // Speed of the shape
 float yspeed = 3;  // Speed of the shape
 
-float yacceleration = 0; // Y Acceleration
+float yaacceleration = 0; // Y Acceleration
 float xacceleration = 0; // X Acceleration
 
 float xdirection = 1;  // Left or Right
